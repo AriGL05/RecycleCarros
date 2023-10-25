@@ -1,6 +1,8 @@
 package com.example.recyclecarros;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
@@ -20,5 +22,9 @@ public class MainActivity extends AppCompatActivity {
         ListadeCarros.add(new Carro("Rojo","Ferrari"));
         ListadeCarros.add(new Carro("Verde","BMW"));
         CarroAdapter ca=new CarroAdapter(ListadeCarros);
+        RecyclerView rv = findViewById(R.id.rcCarros);
+        rv.setAdapter(ca);
+        rv.setLayoutManager(new LinearLayoutManager(this));
+        rv.setHasFixedSize(true);
     }
 }
