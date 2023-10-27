@@ -1,5 +1,6 @@
 package com.example.recyclecarros.adapters;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +39,7 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarroHolder>
     public int getItemCount() {
         return listaCarros.size();
     }
-    public class CarroHolder extends RecyclerView.ViewHolder{
+    public class CarroHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
         TextView tvcolor;
         TextView tvmodelo;
         Carro carro;
@@ -46,12 +47,18 @@ public class CarroAdapter extends RecyclerView.Adapter<CarroAdapter.CarroHolder>
             super(itemView);
             tvcolor=itemView.findViewById(R.id.tvColor);
             tvmodelo=itemView.findViewById(R.id.tvModelo);
+            tvcolor.setOnClickListener(this);
         }
 
         public void setdata(Carro c) {
             carro=c;
             tvcolor.setText(c.getColor());
             tvmodelo.setText(c.getModelo());
+        }
+
+        @Override
+        public void onClick(View view) {
+            Log.i("mivalor",carro.getColor());
         }
     }
 }
